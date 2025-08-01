@@ -1,11 +1,11 @@
 
 
-interface photo{
+interface Photo{
     id:number;
     photo:string;
 }
 
-interface benefit{
+interface Benefit{
     id:number;
     name:string;
 }
@@ -17,9 +17,10 @@ export interface Office {
     slug:string;
     thumbnail:string;
     city:City;
-    photo:photo[];
-    benefits:benefit[];
+    photos:Photo[];
+    benefits:Benefit[];
     about:string;
+    address:string;
     // address:string;
 }
 export interface City {
@@ -42,6 +43,4 @@ export interface BookingDetails{
     ended_at:string;
     total_amount:number;
     office:Office;
-
-
 }
