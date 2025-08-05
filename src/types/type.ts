@@ -9,6 +9,13 @@ interface Benefit{
     id:number;
     name:string;
 }
+interface Contact {
+    id:number;
+    name:string;
+    position:string;
+    phone:string;
+    picture:string;
+}
 export interface Office {
     id:number;
     price:number;
@@ -19,9 +26,10 @@ export interface Office {
     city:City;
     photos:Photo[];
     benefits:Benefit[];
+    contacts:Contact[];
     about:string;
     address:string;
-    // address:string;
+    
 }
 export interface City {
     id:number;
@@ -32,7 +40,7 @@ export interface City {
     officeSpaces:Office[];
 }
 
-export interface BookingDetails{
+export interface BookingDetails {
     id:number;
     name:string;
     phone_number:string;
@@ -42,5 +50,5 @@ export interface BookingDetails{
     started_at:string;
     ended_at:string;
     total_amount:number;
-    office:Office;
+    office:Office[];
 }
