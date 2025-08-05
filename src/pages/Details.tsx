@@ -95,7 +95,7 @@ export default function Details() {
                   className="w-6 h-6"
                   alt="icon"
                 />
-                <p className="font-semibold">Jakarta Pusat</p>
+                <p className="font-semibold">{office.city.name}</p>
               </div>
             </div>
             <div className="flex flex-col gap-[6px]">
@@ -129,7 +129,7 @@ export default function Details() {
               <p className="font-semibold text-right">4.5/5 (19,384)</p>
             </div>
           </div>
-          <p className="leading-[30px]">{office.about}</p>
+          <p className="leading-[30px] text-justify">{office.about}</p>
           <hr className="border-[#F6F5FD]" />
           <h2 className="font-bold">You Get What You Need Most</h2>
           <div className="grid grid-cols-3 gap-x-5 gap-y-[30px]">
