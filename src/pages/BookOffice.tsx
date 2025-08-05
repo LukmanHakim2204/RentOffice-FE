@@ -4,6 +4,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import type z from "zod";
 import type { Office } from "../types/type";
 import { bookingSchema } from "../types/validationBooking";
+import Navbar from "../component/Navbar";
+import apiClient from "../services/apiServices";
 
 export default function BookOffice() {
   const { slug } = useParams<{ slug: string }>();
@@ -28,12 +30,8 @@ export default function BookOffice() {
     useState<number>(0);
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:8000/api/office/${slug}`, {
-        headers: {
-          "X-API-KEY": "NJANKmnqksdnqAJNQSKN121sndqk",
-        },
-      })
+    apiClient
+      .get(`/office/${slug}`)
       .then((response) => {
         console.log("response", response.data.data);
         setOffice(response.data.data);
@@ -133,6 +131,7 @@ export default function BookOffice() {
 
   return (
     <>
+      <Navbar></Navbar>
       <div
         id="Banner"
         className="relative w-full h-[240px] flex items-center shrink-0 overflow-hidden -mb-[50px]"

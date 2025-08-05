@@ -21,7 +21,7 @@ export default function Navbar() {
             <Link to={"/events"}>Events</Link>
           </li>
           <li>
-            <Link to={"/view-booking-details"}>My Booking</Link>
+            <Link to={"/check-booking"}>My Booking</Link>
           </li>
         </ul>
         <Link

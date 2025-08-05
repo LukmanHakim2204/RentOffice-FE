@@ -50,5 +50,5 @@ export interface BookingDetails {
     started_at:string;
     ended_at:string;
     total_amount:number;
-    office:Office[];
+    office:Office;
 }

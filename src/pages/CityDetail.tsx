@@ -1,9 +1,9 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import type { City } from "../types/type";
 import OfficeCard from "../component/OfficeCard";
 import Navbar from "../component/Navbar";
+import apiClient from "../services/apiServices";
 
 export default function CityDetail() {
   const { slug } = useParams<{ slug: string }>();
@@ -13,12 +13,8 @@ export default function CityDetail() {
   const [errror, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:8000/api/city/${slug}`, {
-        headers: {
-          "X-API-KEY": "NJANKmnqksdnqAJNQSKN121sndqk",
-        },
-      })
+    apiClient
+      .get(`/city/${slug}`)
       .then((response) => {
         setCity(response.data.data);
         setLoading(false);

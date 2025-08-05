@@ -1,9 +1,9 @@
 import { Link, useParams } from "react-router-dom";
 import type { Office } from "../types/type";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import Navbar from "../component/Navbar";
 import { Swiper, SwiperSlide } from "swiper/react";
+import apiClient from "../services/apiServices";
 
 export default function Details() {
   const { slug } = useParams<{ slug: string }>();
@@ -12,12 +12,8 @@ export default function Details() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:8000/api/office/${slug}`, {
-        headers: {
-          "X-API-KEY": "NJANKmnqksdnqAJNQSKN121sndqk",
-        },
-      })
+    apiClient
+      .get(`/office/${slug}`)
       .then((response) => {
         setOffice(response.data.data);
         setLoading(false);

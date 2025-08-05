@@ -4,6 +4,7 @@ import type { BookingDetails } from "../types/type";
 import axios from "axios";
 import { viewBookingSchema } from "../types/validationBooking";
 import Navbar from "../component/Navbar";
+import apiClient from "../services/apiServices";
 
 export default function CheckBooking() {
   const [formData, setFormData] = useState({
@@ -35,17 +36,9 @@ export default function CheckBooking() {
 
     setIsLoading(true);
     try {
-      const response = await axios.post(
-        "http://localhost:8000/api/check-booking",
-        {
-          ...formData,
-        },
-        {
-          headers: {
-            "X-API-KEY": "NJANKmnqksdnqAJNQSKN121sndqk",
-          },
-        }
-      );
+      const response = await apiClient.post("/check-booking", {
+        ...formData,
+      });
       console.log("We are check your booking", response.data.data);
       setBookingDetails(response.data.data);
     } catch (error: unknown) {
@@ -150,7 +143,7 @@ export default function CheckBooking() {
               <div className="flex items-center gap-4">
                 <div className="flex shrink-0 w-[140px] h-[100px] rounded-[20px] overflow-hidden">
                   <img
-                    src="assets/images/thumbnails/thumbnail-details-4.png"
+                    src={`${baseUrl}/${BookingDetails.office.thumbnail}`}
                     className="w-full h-full object-cover"
                     alt="thumbnail"
                   />
